@@ -1,5 +1,5 @@
 {
-  "namedDatasets": ["owned-by-oxford", "oxford", "dotcoop", "coops-uk", "covid-mutual-aid", "good-food-oxford"],
+  "namedDatasets": ["owned-by-oxford"],
   "htmlTitle": "Owned by Oxford",
   "filterableFields" : [
     "shortPostcode"
