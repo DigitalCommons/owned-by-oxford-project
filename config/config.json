@@ -12,8 +12,8 @@
   "vocabularies": [
     { "endpoint": "http:\/\/dev.data.solidarityeconomy.coop:8890/sparql",
       "uris": {
-        "https:\/\/dev.lod.coop/essglobal/2.1/standard/activities/": "aci",
-        "https:\/\/dev.lod.coop/essglobal/2.1/standard/organisational-structure/": "os"
+        "https:\/\/w3id.solidarityeconomy.coop/essglobal/V2a/standard/activities-modified/": "aci",
+        "https:\/\/w3id.solidarityeconomy.coop/essglobal/V2a/standard/organisational-structure/": "os"
       }
     }
   ],
