@@ -1,6 +1,6 @@
 "use strict";
 
-function getAddress(initiative, getTerm) {
+function getAddress(initiative, getTerm, labels) {
   // We want to add the whole address into a single para
   // Not all orgs have an address
   let address = "";
@@ -28,7 +28,7 @@ function getAddress(initiative, getTerm) {
     address += (address.length ? "<br/>" : "") + (countryName || initiative.countryId);
   }
   if (initiative.nongeo == 1 || !initiative.lat || !initiative.lng) {
-    address += (address.length ? "<br/>" : "") + "<i>NO LOCATION AVAILABLE</i>";
+    address += (address.length ? "<br/>" : "") + `<i>${labels.noLocation}</i>`;
   }
   if (address.length) {
     address = '<p class="sea-initiative-address">' + address + "</p>";
@@ -36,25 +36,93 @@ function getAddress(initiative, getTerm) {
   return address;
 }
 
-function getWebsite(initiative) {
-  // Initiative's website. Note, not all have a website.
+function getDotcoopDomains(initiative) {
+  // Initiative's dotcoop domains. Note, not all have a website.
   if (initiative.www)
     return `<a href="${initiative.www}" target="_blank" >${initiative.www}</a>`;
   return '';
 }
 
-function linkTo(url, options) {
-  return `<a class="${options.class}" href="${url}" target="_blank" ></a>`;
+function getBMT(initiative, bmtVocab) {
+  if (initiative.baseMembershipType) {
+    return `${bmtVocab.title}: ${bmtVocab.terms[initiative.baseMembershipType]}`;
+  }
+
+  return `${bmtVocab.title}: Others`;
+}
+
+function getOrgStructure(initiative, osVocab, acVocab, qfVocab) {
+  if (!initiative.qualifier && initiative.orgStructure && initiative.orgStructure.length > 0) {
+    const terms = initiative.orgStructure.map(id => osVocab.terms[id]).join(", ");
+    return `${osVocab.title}: ${terms}`;
+  }
+
+  if (!initiative.qualifier && initiative.regorg) {
+    if (!osVocab.terms[initiative.regorg])
+      console.error(`Unknown ${osVocab.title} vocab term ID: ${initiative.regorg}`);
+    return `${osVocab.title}: ${osVocab.terms[initiative.regorg]}`;
+  }
+
+  if (initiative.qualifier) {
+    if (!qfVocab)
+      qfVocab = {};
+
+    if (!qfVocab.terms)
+      qfVocab.terms = {};
+
+    if (!qfVocab.terms[initiative.qualifier]) {
+      qfVocab.terms[initiative.qualifier] = "unknown";
+      console.error(`Unknown ${qfVocab.title} vocab term ID: ${initiative.qualifier}`);
+    }
+
+    return `${osVocab.title}: ${qfVocab.terms[initiative.qualifier]}`;
+  }
+
+  return '';
+}
+
+function getPrimaryActivity(initiative, acVocab) {
+  if (initiative.primaryActivity && initiative.primaryActivity != "") {
+    return `${acVocab.title}: ${acVocab.terms[initiative.primaryActivity]}`;
+  }
+
+  return '';
+}
+
+function getSecondaryActivities(initiative, acVocab, labels) {
+  const title = labels.secondaryActivities;
+
+  if (initiative.otherActivities && initiative.otherActivities.length > 0) {
+    const term = initiative.otherActivities.map(id => acVocab.terms[id]).join(", ");
+    return `${title}: ${term}`;
+  }
+
+  if (initiative.activity) {
+    return `${title}: ${acVocab.terms[initiative.activity]}`;
+  }
+
+  return '';
+}
+
+function getEmail(initiative) {
+  // Not all orgs have an email
+  if (initiative.email)
+    return `<a class="fa fa-at" href="mailto:${initiative.email}" target="_blank" ></a>`;
+  return "";
 }
 
 function getFacebook(initiative) {
-  return initiative.facebook? linkTo(`https://facebook.com/${initiative.facebook}`,
-                                     {class: "fab fa-facebook"}) : '';
-}  
+  // not all have a facebook
+  if (initiative.facebook)
+    return `<a class="fab fa-facebook" href="https://facebook.com/${initiative.facebook}" target="_blank" ></a>`;
+  return "";
+}
 
 function getTwitter(initiative) {
-  return initiative.twitter? linkTo(`https://twitter.com/${initiative.twitter}`,
-                                    {class: "fab fa-twitter"}) : '';
+  // not all have twitter
+  if (initiative.twitter)
+    return `<a class="fab fa-twitter" href="https://twitter.com/${initiative.twitter}" target="_blank" ></a>`;
+  return '';
 }
 
 function getPopup(initiative, sse_initiatives) {
@@ -62,28 +130,31 @@ function getPopup(initiative, sse_initiatives) {
     const vocabUri = sse_initiatives.getVocabUriForProperty(propertyName);
     return sse_initiatives.getVocabTerm(vocabUri, initiative[propertyName]);
   }
-  
+
   const values = sse_initiatives.getLocalisedVocabs();
   const labels = sse_initiatives.getFunctionalLabels();
-
   let popupHTML = `
     <div class="sea-initiative-details">
       <h2 class="sea-initiative-name">${initiative.name}</h2>
-      ${getWebsite(initiative)}
+      ${getDotcoopDomains(initiative)}
+      <h4 class="sea-initiative-org-structure">${getOrgStructure(initiative, values["os:"], values["aci:"], values["qf:"])}</h4>
+      <h4 class="sea-initiative-economic-activity">${getPrimaryActivity(initiative, values["aci:"])}</h4>
+      <h5 class="sea-initiative-secondary-activity">${getSecondaryActivities(initiative, values["aci:"], labels)}</h5>
       <p>${initiative.desc || ''}</p>
     </div>
     
     <div class="sea-initiative-contact">
       <h3>${labels.contact}</h3>
-      ${getAddress(initiative, getTerm)}
+      ${getAddress(initiative, getTerm, labels)}
       
       <div class="sea-initiative-links">
+        ${getEmail(initiative)}
         ${getFacebook(initiative)}
         ${getTwitter(initiative)}
       </div>
     </div>
   `;
-  
+
   return popupHTML;
 };
 
