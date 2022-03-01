@@ -2,7 +2,7 @@
   "namedDatasets": ["owned-by-oxford"],
   "htmlTitle": "Owned by Oxford",
   "filterableFields" : [
-    "shortPostcode"
+    "primaryActivity", "shortPostcode"
   ],
   "searchedFields": [
     "name", "street", "locality", "postcode", "description"
