@@ -19,7 +19,7 @@
   ],
   "defaultLatLng": ["51.7520", "-1.2577" ],
   "defaultOpenSidebar": false,
-  "initialBounds": [[51.5520,-1.2377],[51.9520,-1.2777]],
+  "initialBounds": [[52.1006, -1.8787],[51.3966, -0.5974]],
   "disableClusteringAtZoom": false,
   "maxZoomOnGroup":12,
   "maxZoomOnOne": 14,
