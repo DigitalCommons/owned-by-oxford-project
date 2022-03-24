@@ -1,0 +1,196 @@
+/* Arts, Media, Culture & Leisure. */
+.sea-initiatives-list-sidebar.sea-field-aci_am10,
+.sea-field-aci_am10 .sea-initiatives-list-sidebar-content,
+.sea-field-aci_am10:hover,
+.sea-field-aci_am10.sea-field-active {
+  background: var(--pink) !important;
+}
+
+.sea-directory-list .sea-field-aci_am10 {
+  border-color: var(--pink) !important;
+}
+
+.awesome-marker-icon-aci_am10 {
+  background-position: 0 0;
+}
+
+/* Campaigning, Activism & Advocacy. */
+.sea-initiatives-list-sidebar.sea-field-aci_am20,
+.sea-field-aci_am20 .sea-initiatives-list-sidebar-content,
+.sea-field-aci_am20:hover,
+.sea-field-aci_am20.sea-field-active {
+  background: var(--orange) !important;
+  /* color: var(--dark) !important; */
+}
+
+.sea-directory-list .sea-field-aci_am20 {
+  border-color: var(--orange) !important;
+}
+
+.awesome-marker-icon-aci_am20 {
+  background-position: -324px 0;
+}
+
+/* Community & Collective Spaces. */
+.sea-initiatives-list-sidebar.sea-field-aci_am30,
+.sea-field-aci_am30 .sea-initiatives-list-sidebar-content,
+.sea-field-aci_am30:hover,
+.sea-field-aci_am30.sea-field-active {
+  background: var(--teal) !important;
+  /* color: var(--dark) !important; */
+}
+
+.sea-directory-list .sea-field-aci_am30 {
+  border-color: var(--teal) !important;
+}
+
+.awesome-marker-icon-aci_am30 {
+  background-position: -144px 0;
+}
+
+/* Education. */
+.sea-initiatives-list-sidebar.sea-field-aci_am40,
+.sea-field-aci_am40 .sea-initiatives-list-sidebar-content,
+.sea-field-aci_am40:hover,
+.sea-field-aci_am40.sea-field-active {
+  background: var(--maroon) !important;
+}
+
+.sea-directory-list .sea-field-aci_am40 {
+  border-color: var(--maroon) !important;
+}
+
+.awesome-marker-icon-aci_am40 {
+  background-position: -468px 0;
+}
+
+/* Energy. */
+.sea-initiatives-list-sidebar.sea-field-aci_am50,
+.sea-field-aci_am50 .sea-initiatives-list-sidebar-content,
+.sea-field-aci_am50:hover,
+.sea-field-aci_am50.sea-field-active {
+  background: var(--blue) !important;
+}
+
+.sea-directory-list .sea-field-aci_am50 {
+  border-color: var(--blue) !important;
+}
+
+.awesome-marker-icon-aci_am50 {
+  background-position: -72px 0;
+}
+
+/* Food. */
+.sea-initiatives-list-sidebar.sea-field-aci_am60,
+.sea-field-aci_am60 .sea-initiatives-list-sidebar-content,
+.sea-field-aci_am60:hover,
+.sea-field-aci_am60.sea-field-active {
+  background: var(--green) !important;
+}
+
+.sea-directory-list .sea-field-aci_am60 {
+  border-color: var(--green) !important;
+}
+
+.awesome-marker-icon-aci_am60 {
+  background-position: -216px 0;
+}
+
+/* Goods & Services. */
+.sea-initiatives-list-sidebar.sea-field-aci_am70,
+.sea-field-aci_am70 .sea-initiatives-list-sidebar-content,
+.sea-field-aci_am70:hover,
+.sea-field-aci_am70.sea-field-active {
+  background: var(--red) !important;
+}
+
+.sea-directory-list .sea-field-aci_am70 {
+  border-color: var(--red) !important;
+}
+
+.awesome-marker-icon-aci_am70 {
+  background-position: -360px 0;
+}
+
+/* Health, Social Care & Wellbeing. */
+.sea-initiatives-list-sidebar.sea-field-aci_am80,
+.sea-field-aci_am80 .sea-initiatives-list-sidebar-content,
+.sea-field-aci_am80:hover,
+.sea-field-aci_am80.sea-field-active {
+  background: var(--navy) !important;
+}
+
+.sea-directory-list .sea-field-aci_am80 {
+  border-color: var(--navy) !important;
+}
+
+.awesome-marker-icon-aci_am80 {
+  background-position: -36px 0;
+}
+
+/* Housing. */
+.sea-initiatives-list-sidebar.sea-field-aci_am90,
+.sea-field-aci_am90 .sea-initiatives-list-sidebar-content,
+.sea-field-aci_am90:hover,
+.sea-field-aci_am90.sea-field-active {
+  background: var(--brown) !important;
+  /* color: var(--aqua-contrast) !important; */
+}
+
+.sea-directory-list .sea-field-aci_am90 {
+  border-color: var(--brown) !important;
+}
+
+.awesome-marker-icon-aci_am90 {
+  background-position: -576px 0;
+}
+
+/* Money & Finance. */
+.sea-initiatives-list-sidebar.sea-field-aci_am100,
+.sea-field-aci_am100 .sea-initiatives-list-sidebar-content,
+.sea-field-aci_am100:hover,
+.sea-field-aci_am100.sea-field-active {
+  background: var(--purple) !important;
+}
+
+.sea-directory-list .sea-field-aci_am100 {
+  border-color: var(--purple) !important;
+}
+
+.awesome-marker-icon-aci_am100 {
+  background-position: -432px 0;
+}
+
+/* Nature, Conservation & Environment. */
+.sea-initiatives-list-sidebar.sea-field-aci_am110,
+.sea-field-aci_am110 .sea-initiatives-list-sidebar-content,
+.sea-field-aci_am110:hover,
+.sea-field-aci_am110.sea-field-active {
+  background: var(--olive) !important;
+}
+
+.sea-directory-list .sea-field-aci_am110 {
+  border-color: var(--olive) !important;
+}
+
+.awesome-marker-icon-aci_am110 {
+  background-position: -180px 0;
+}
+
+/* Reduce, Reuse, Repair & Recycle. */
+.sea-initiatives-list-sidebar.sea-field-aci_am120,
+.sea-field-aci_am120 .sea-initiatives-list-sidebar-content,
+.sea-field-aci_am120:hover,
+.sea-field-aci_am120.sea-field-active {
+  background: var(--gray) !important;
+  /* color: var(--yellow-contrast) !important; */
+}
+
+.sea-directory-list .sea-field-aci_am120 {
+  border-color: var(--gray) !important;
+}
+
+.awesome-marker-icon-aci_am120 {
+  background-position: -612px 0;
+}
+
