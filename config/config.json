@@ -19,7 +19,6 @@
   ],
   "defaultLatLng": ["51.7520", "-1.2577" ],
   "defaultOpenSidebar": false,
-  "initialBounds": [[52.1006, -1.8787],[51.3966, -0.5974]],
   "disableClusteringAtZoom": false,
   "doesDirectoryHaveColours": true,
   "maxZoomOnGroup":12,
