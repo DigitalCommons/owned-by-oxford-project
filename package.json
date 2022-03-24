@@ -16,7 +16,7 @@
   "author": "Solidarity Economy Association",
   "license": "UNLICENSED",
   "dependencies": {
-    "sea-map": "github:SolidarityEconomyAssociation/sea-map#semver:^1.2.2"
+    "sea-map": "github:SolidarityEconomyAssociation/sea-map#semver:^1.3.2"
   },
   "devDependencies": {}
 }
