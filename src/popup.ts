@@ -92,13 +92,20 @@ function getPrimaryActivity(initiative, acVocab) {
 function getSecondaryActivities(initiative, acVocab, labels) {
   const title = labels.secondaryActivities;
 
-  if (initiative.otherActivities && initiative.otherActivities.length > 0) {
-    const term = initiative.otherActivities.map(id => acVocab.terms[id]).join(", ");
+  if (initiative.activities && initiative.activities.length > 0) {
+    const term = initiative.activities.map(id => acVocab.terms[id]).join(", ");
     return `${title}: ${term}`;
   }
 
-  if (initiative.activity) {
-    return `${title}: ${acVocab.terms[initiative.activity]}`;
+  return '';
+}
+
+function getRelationship(initiative, labels) {
+  const title = labels.relationship || 'Relationship'; // FIXME unhack fallback
+  
+  if (initiative.relationship && initiative.relationship.length > 0) {
+    const term = initiative.relationship.join(", "); // FIXME how to localise?
+    return `${title}: ${term}`;
   }
 
   return '';
@@ -140,6 +147,9 @@ function getPopup(initiative, sse_initiatives) {
       <h4 class="sea-initiative-org-structure">${getOrgStructure(initiative, values["os:"], values["aci:"], values["qf:"])}</h4>
       <h4 class="sea-initiative-economic-activity">${getPrimaryActivity(initiative, values["aci:"])}</h4>
       <h5 class="sea-initiative-secondary-activity">${getSecondaryActivities(initiative, values["aci:"], labels)}</h5>
+      <h5 class="sea-initiative-secondary-activity">
+        ${getRelationship(initiative, labels)}
+      </h5>
       <p>${initiative.desc || ''}</p>
     </div>
     

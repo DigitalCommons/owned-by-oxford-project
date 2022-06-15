@@ -3,6 +3,5 @@
 
 /build/
 /node_modules/
+/src/version.json
 
-# Regenerated
-/config/version.json
