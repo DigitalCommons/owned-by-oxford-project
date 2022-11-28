@@ -83,7 +83,7 @@ function getOrgStructure(initiative, osVocab, acVocab, qfVocab) {
 
 function getPrimaryActivity(initiative, acVocab) {
   if (initiative.primaryActivity && initiative.primaryActivity != "") {
-    return `${acVocab.title}: ${acVocab.terms[initiative.primaryActivity]}`;
+    return `Main Activity: ${acVocab.terms[initiative.primaryActivity]}`;
   }
 
   return '';
