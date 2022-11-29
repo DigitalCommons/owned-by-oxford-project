@@ -10,7 +10,7 @@ import { getAddress, getEmail, getTwitter } from "sea-map/app/view/map/default_p
 import * as versions from "./version.json";
 
 import about from "../config/about.html";
-import { getPopup } from './popup';
+import { getPopup } from './popup.js';
 
 const config: ConfigData = {
   namedDatasets: ['owned-by-oxford'],
