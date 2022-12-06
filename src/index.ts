@@ -56,7 +56,7 @@ const config: ConfigData = {
     },
   },
   filterableFields: [
-    'primaryActivity', 'shortPostcode'
+    'primaryActivity', 'activities', 'shortPostcode'
   ],
   searchedFields: [
     'name', 'street', 'locality', 'postcode', 'description'
