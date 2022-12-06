@@ -155,13 +155,12 @@ function getPopup(initiative, sse_initiatives) {
     
     <div class="sea-initiative-contact">
       <h3>${labels.contact}</h3>
-      ${getAddress(initiative, getTerm, labels)}
-      
       <div class="sea-initiative-links">
         ${getEmail(initiative)}
         ${getFacebook(initiative)}
         ${getTwitter(initiative)}
       </div>
+      ${getAddress(initiative, getTerm, labels)}
     </div>
   `;
 
