@@ -18,6 +18,7 @@ const config: ConfigData = {
   fields: {
     desc: 'value',
     www: 'value',
+    email: 'value',
     twitter: 'value',
     street: 'value',
     locality: 'value',    
