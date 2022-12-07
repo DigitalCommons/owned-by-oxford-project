@@ -114,7 +114,7 @@ function getRelationship(initiative, labels) {
 function getEmail(initiative) {
   // Not all orgs have an email
   if (initiative.email)
-    return `<a class="fa fa-at" href="mailto:${initiative.email}" target="_blank" ></a>`;
+    return `<a class="fa fa-envelope" href="mailto:${initiative.email}" target="_blank" ></a>`;
   return "";
 }
 
