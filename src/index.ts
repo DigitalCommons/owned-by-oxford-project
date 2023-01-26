@@ -79,6 +79,7 @@ const config: ConfigData = {
   maxZoomOnGroup:12,
   maxZoomOnOne: 14,
   maxZoomOnSearch: 12,
+  showDatasetsPanel: false,
   customPopup: getPopup,
   aboutHtml: about,
   ...versions,
