@@ -4,4 +4,4 @@
 /build/
 /node_modules/
 /src/version.json
-
+/config/config.json

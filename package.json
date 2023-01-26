@@ -9,14 +9,14 @@
     "deploy_group": "www-data"
   },
   "scripts": {
-    "build": "sea-site-build -s src -c config -m node_modules/sea-map -d build www/* www/.htaccess",
-    "server": "php -t build/out -S localhost:8080",
-    "deploy": "set -x; rsync -avzc --delete --rsync-path='sudo rsync' --usermap=\"*:$npm_package_config_deploy_user\" --groupmap=\"*:$npm_package_config_deploy_group\" --include .htaccess --exclude=build.txt --exclude=.* build/out/ \"${npm_package_config_deploy_to:?Please define the '$npm_package_name:deploy_to' npm config parameter}\""
+    "build": "mykomap-site-build -c config -s src -m node_modules/mykomap -d build www/* www/.htaccess",
+    "deploy": "mykomap-site-deploy -f build/out/",
+    "server": "php -t build/out -S localhost:8080"
   },
-  "author": "Solidarity Economy Association",
+  "author": "Digital Commons Cooperative",
   "license": "UNLICENSED",
   "dependencies": {
-    "sea-map": "github:SolidarityEconomyAssociation/sea-map#sparql-bypass-obo"
+    "mykomap": "github:DigitalCommons/mykomap#v3.0.3"
   },
   "devDependencies": {
     "@types/d3": "^7.4.0"
