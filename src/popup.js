@@ -100,17 +100,6 @@ function getSecondaryActivities(initiative, acVocab, labels) {
   return '';
 }
 
-function getRelationship(initiative, labels) {
-  const title = labels.relationship || 'Relationship'; // FIXME unhack fallback
-  
-  if (initiative.relationship && initiative.relationship.length > 0) {
-    const term = initiative.relationship.join(", "); // FIXME how to localise?
-    return `${title}: ${term}`;
-  }
-
-  return '';
-}
-
 function getEmail(initiative) {
   // Not all orgs have an email
   if (initiative.email)
@@ -147,9 +136,6 @@ function getPopup(initiative, sse_initiatives) {
       <h4 class="sea-initiative-org-structure">${getOrgStructure(initiative, values["os:"], values["aci:"], values["qf:"])}</h4>
       <h4 class="sea-initiative-economic-activity">${getPrimaryActivity(initiative, values["aci:"])}</h4>
       <h5 class="sea-initiative-secondary-activity">${getSecondaryActivities(initiative, values["aci:"], labels)}</h5>
-      <h5 class="sea-initiative-secondary-activity">
-        ${getRelationship(initiative, labels)}
-      </h5>
       <p>${initiative.desc || ''}</p>
     </div>
     

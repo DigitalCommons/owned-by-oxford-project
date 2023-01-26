@@ -49,12 +49,6 @@ const config: ConfigData = {
         from: 'activity',
       },
     },
-    relationship: {
-      type: 'multi',
-      of: {
-        type: 'value',
-      },
-    },
   },
   filterableFields: [
     'primaryActivity', 'activities', 'shortPostcode'
