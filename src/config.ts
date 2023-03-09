@@ -1,10 +1,13 @@
 // Re-export of ConfigData in sea-map/index above seems not to work,
 // so import it directly from here:
-import { ConfigData } from  "mykomap/app/model/config_schema";
+import { ConfigData } from  "mykomap/app/model/config-schema";
 
 import type {
-  CustomPropDef, FieldDefs, InitiativeObj
-} from "mykomap/app/model/dataservices";
+  CustomPropDef, FieldDefs
+} from "mykomap/app/model/data-services";
+import type {
+  InitiativeObj
+} from "mykomap/app/model/initiative";
 import {
   mkObjTransformer,
   Transforms as T,
