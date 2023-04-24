@@ -94,7 +94,7 @@ export const config: ConfigData = new ConfigData({
     'combinedActivities', 'primaryActivity', 'activities' //, 'shortPostcode'
   ],
   searchedFields: [
-    'name', 'street', 'locality', 'postcode', 'description'
+    'name', 'street', 'locality', 'postcode', 'description', 'combinedActivities'
   ],
   languages: ['EN'],
   language: 'EN',
