@@ -29,7 +29,7 @@ const rowToObj = mkObjTransformer<Row, InitiativeObj>({
   manLng: T.nullable.number(null).from('Geo Container Longitude'),
   desc: T.text('').from('Description'),
   natureOfOrganisation: T.multi({of: T.text(''), omit: ['']}).from('Nature of Organisation'),
-  regorg: T.nullable.text(null).from('Organisational Structure'),
+  orgStructure: T.multi({of: T.text(''), omit: ['']}).from('Organisational Structure'),
   primaryActivity: T.nullable.text(null).from('Primary Activity'),
   activity: T.multi({of: T.text(''), omit: ['']}).from('Activities'),
   combinedActivities: T.multi({of: T.text(''), omit: ['']}).from('Combined Activities'),
@@ -91,6 +91,13 @@ const fields: FieldDefs = {
       from: 'combinedActivities',
     },
   },
+  orgStructure: {
+    type: 'multi',
+    of: {
+      type: 'vocab',
+      uri: 'os:',
+    },
+  },
 };
 
 export const config: ConfigData = new ConfigData({
@@ -98,10 +105,10 @@ export const config: ConfigData = new ConfigData({
   htmlTitle: 'Owned by Oxford',
   fields: fields,
   filterableFields: [
-    'natureOfOrganisation', 'combinedActivities', 'primaryActivity', 'activities' //, 'shortPostcode'
+    'natureOfOrganisation', 'combinedActivities', 'primaryActivity', 'activities', 'orgStructure'
   ],
   searchedFields: [
-    'name', 'street', 'locality', 'postcode', 'description', 'combinedActivities'
+    'name', 'street', 'locality', 'postcode', 'description', 'combinedActivities', 'orgStructure',
   ],
   languages: ['EN'],
   language: 'EN',
