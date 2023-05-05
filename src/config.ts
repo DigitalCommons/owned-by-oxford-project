@@ -28,6 +28,7 @@ const rowToObj = mkObjTransformer<Row, InitiativeObj>({
   manLat: T.nullable.number(null).from('Geo Container Latitude'),
   manLng: T.nullable.number(null).from('Geo Container Longitude'),
   desc: T.text('').from('Description'),
+  natureOfOrganisation: T.multi({of: T.text(''), omit: ['']}).from('Nature of Organisation'),
   regorg: T.nullable.text(null).from('Organisational Structure'),
   primaryActivity: T.nullable.text(null).from('Primary Activity'),
   activity: T.multi({of: T.text(''), omit: ['']}).from('Activities'),
@@ -64,6 +65,12 @@ const fields: FieldDefs = {
       return match ? match[0] : undefined;
     },
   },
+  natureOfOrganisation: {
+    type: 'multi',
+    of: {
+      type: 'value',
+    },
+  },
   primaryActivity: {
     type: 'vocab',
     uri: 'aci:',
@@ -91,7 +98,7 @@ export const config: ConfigData = new ConfigData({
   htmlTitle: 'Owned by Oxford',
   fields: fields,
   filterableFields: [
-    'combinedActivities', 'primaryActivity', 'activities' //, 'shortPostcode'
+    'natureOfOrganisation', 'combinedActivities', 'primaryActivity', 'activities' //, 'shortPostcode'
   ],
   searchedFields: [
     'name', 'street', 'locality', 'postcode', 'description', 'combinedActivities'
