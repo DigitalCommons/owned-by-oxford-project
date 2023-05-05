@@ -120,7 +120,7 @@ export const config: ConfigData = new ConfigData({
       id: 'obo-vocab',
       type: 'json',
       label: 'Owned By Oxford',
-      url: 'vocabs.json',
+      url: 'https://dev.data.solidarityeconomy.coop/owned-by-oxford/vocabs.json',
     }
   ],
   dataSources: [
@@ -128,8 +128,7 @@ export const config: ConfigData = new ConfigData({
       id: 'obo-public',
       label: 'Owned By Oxford',
       type: 'csv',
-//      url: 'https://dev.data.solidarityeconomy.coop/owned-by-oxford/standard.csv',
-      url: 'standard.csv',
+      url: 'https://dev.data.solidarityeconomy.coop/owned-by-oxford/standard.csv',
       transform: rowToObj,
     },
   ],
