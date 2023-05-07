@@ -73,13 +73,13 @@ const fields: FieldDefs = {
   },
   primaryActivity: {
     type: 'vocab',
-    uri: 'aci:',
+    uri: 'am:',
   },
   activities: {
     type: 'multi',
     of: {
       type: 'vocab',
-      uri: 'aci:',
+      uri: 'am:',
       from: 'activity',
     },
   },
@@ -87,7 +87,7 @@ const fields: FieldDefs = {
     type: 'multi',
     of: {
       type: 'vocab',
-      uri: 'aci:',
+      uri: 'am:',
       from: 'combinedActivities',
     },
   },
