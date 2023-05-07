@@ -105,7 +105,7 @@ export const config: ConfigData = new ConfigData({
   htmlTitle: 'Owned by Oxford',
   fields: fields,
   filterableFields: [
-    'natureOfOrganisation', 'combinedActivities', 'primaryActivity', 'activities', 'orgStructure'
+    'combinedActivities', 'primaryActivity', 'activities', 'orgStructure'
   ],
   searchedFields: [
     'name', 'street', 'locality', 'postcode', 'description', 'combinedActivities', 'orgStructure',
