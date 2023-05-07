@@ -113,16 +113,6 @@ export const config: ConfigData = new ConfigData({
   languages: ['EN'],
   language: 'EN',
   vocabularies: [
-    /*{
-      id: 'obo-vocab',
-      type: 'hostSparql',
-      label: 'Owned By Oxford',
-      endpoint: 'http://dev.data.solidarityeconomy.coop:8890/sparql',
-      defaultGraphUri: 'https://dev.lod.coop/owned-by-oxford',
-      uris: {
-        'https://dev.lod.coop/essglobal/2.1/standard/activities-modified/': 'aci'
-      }
-    } */
     {
       id: 'obo-vocab',
       type: 'json',
