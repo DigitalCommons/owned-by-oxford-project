@@ -15,7 +15,7 @@ import {
 import * as versions from "./version.json";
 
 import about from "../config/about.html";
-import { getPopup } from './popup.js';
+import { getPopup } from './popup';
 
 type Row = Record<string, string|null|undefined>;
 const baseUri = 'https://dev.lod.coop/coops-uk/';
