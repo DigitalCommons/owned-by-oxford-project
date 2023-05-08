@@ -46,6 +46,14 @@ function getWww(initiative: Initiative) {
   return '';
 }
 
+function getNatureOfOrganisation(initiative: Initiative) {
+  if (initiative.natureOfOrganisation instanceof Array && initiative.natureOfOrganisation.length > 0) {
+    const term = initiative.natureOfOrganisation.join(", ");    
+    return `Nature of Organisation: ${term}`;
+  }
+  return '';
+}
+
 function getOrgStructure(initiative: Initiative, osVocab: Vocab) {
 
   if (initiative.orgStructure instanceof Array && initiative.orgStructure.length > 0) {
@@ -117,6 +125,7 @@ export function getPopup(initiative: Initiative, sse_initiatives: DataServices) 
     <div class="sea-initiative-details">
       <h2 class="sea-initiative-name">${initiative.name}</h2>
       ${getWww(initiative)}
+      <h4 class="sea-initiative-nature-of-organisation">${getNatureOfOrganisation(initiative)}</h4>
       <h4 class="sea-initiative-org-structure">${getOrgStructure(initiative, values[orgStructUri])}</h4>
       <h4 class="sea-initiative-economic-activity">${getPrimaryActivity(initiative, values[activtiesUri])}</h4>
       <h4 class="sea-initiative-secondary-activity">${getSecondaryActivities(initiative, values[activtiesUri], labels)}</h5>
