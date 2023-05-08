@@ -16,7 +16,7 @@
   "author": "Digital Commons Cooperative",
   "license": "UNLICENSED",
   "dependencies": {
-    "mykomap": "github:DigitalCommons/mykomap#v3.0.5"
+    "mykomap": "github:DigitalCommons/mykomap#v3.0.6"
   },
   "devDependencies": {
     "@types/d3": "^7.4.0"
