@@ -74,10 +74,12 @@ const fields: FieldDefs = {
   primaryActivity: {
     type: 'vocab',
     uri: 'am:',
+    titleUri: 'ui:primaryActivity',
   },
   activities: {
     type: 'multi',
     from: 'activity',
+    titleUri: 'ui:secondaryActivities',
     of: {
       type: 'vocab',
       uri: 'am:',
@@ -85,6 +87,7 @@ const fields: FieldDefs = {
   },
   combinedActivities: {
     type: 'multi',
+    titleUri: 'ui:combinedActivities',
     of: {
       type: 'vocab',
       uri: 'am:',
@@ -117,6 +120,12 @@ export const config: ConfigData = new ConfigData({
       type: 'json',
       label: 'Owned By Oxford',
       url: 'https://dev.data.solidarityeconomy.coop/owned-by-oxford/vocabs.json',
+    },
+    {
+      id: 'ui-vocab',
+      type: 'json',
+      label: 'Local Terms',
+      url: 'obo.json',
     }
   ],
   dataSources: [

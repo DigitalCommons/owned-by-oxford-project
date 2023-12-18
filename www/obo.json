@@ -1,0 +1,27 @@
+{
+  "prefixes": {
+    "https://dev.lod.coop/owned-by-oxford/phrases#": "ui",
+    "https://dev.lod.coop/owned-by-oxford/org-nature/": "no"
+  },
+  "vocabs": {
+    "ui:": {
+      "EN": {
+        "title": "Owned-by-Oxford Related Phrases",
+        "terms": {
+          "ui:primaryActivity": "Primary Activity",
+          "ui:secondaryActivities": "Secondary Activity",
+          "ui:combinedActivities": "Activities"
+        }
+      }
+    },
+    "no:": {
+      "EN": {
+        "title": "Nature of Organisation",
+        "terms": {
+          "no:communityEnt": "Community Enterprise",
+          "no:supportOrg": "Support Organisation"
+        }
+      }
+    }
+  }
+}
