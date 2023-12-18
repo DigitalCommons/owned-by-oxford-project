@@ -77,10 +77,10 @@ const fields: FieldDefs = {
   },
   activities: {
     type: 'multi',
+    from: 'activity',
     of: {
       type: 'vocab',
       uri: 'am:',
-      from: 'activity',
     },
   },
   combinedActivities: {
@@ -88,7 +88,6 @@ const fields: FieldDefs = {
     of: {
       type: 'vocab',
       uri: 'am:',
-      from: 'combinedActivities',
     },
   },
   orgStructure: {
