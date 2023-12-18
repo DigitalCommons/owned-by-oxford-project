@@ -19,6 +19,7 @@ import { getPopup } from './popup';
 
 type Row = Record<string, string|null|undefined>;
 const baseUri = 'https://dev.lod.coop/coops-uk/';
+const baseNoUri = 'https://dev.lod.coop/owned-by-oxford/org-nature/';
 
 const rowToObj = mkObjTransformer<Row, InitiativeObj>({
   uri: T.prefixed(baseUri).from('Identifier'),
@@ -28,7 +29,7 @@ const rowToObj = mkObjTransformer<Row, InitiativeObj>({
   manLat: T.nullable.number(null).from('Geo Container Latitude'),
   manLng: T.nullable.number(null).from('Geo Container Longitude'),
   desc: T.text('').from('Description'),
-  natureOfOrganisation: T.multi({of: T.text(''), omit: ['']}).from('Nature of Organisation'),
+  natureOfOrganisation: T.multi({of: T.nullable.prefixed(baseNoUri), omit: ['', null]}).from('Nature of Organisation'),
   orgStructure: T.multi({of: T.text(''), omit: ['']}).from('Organisational Structure'),
   primaryActivity: T.nullable.text(null).from('Primary Activity'),
   activity: T.multi({of: T.text(''), omit: ['']}).from('Activities'),
@@ -68,7 +69,8 @@ const fields: FieldDefs = {
   natureOfOrganisation: {
     type: 'multi',
     of: {
-      type: 'value',
+      type: 'vocab',
+      uri: 'no:'
     },
   },
   primaryActivity: {
