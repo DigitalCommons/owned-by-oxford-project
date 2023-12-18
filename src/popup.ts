@@ -1,4 +1,4 @@
-import { DataServices } from "mykomap/app/model/data-services";
+import { DataServices, isVocabPropDef } from "mykomap/app/model/data-services";
 import { Initiative } from "mykomap/app/model/initiative";
 import { Vocab } from "mykomap/app/model/vocabs";
 import { PhraseBook } from "mykomap/localisations";
@@ -115,20 +115,32 @@ function getTwitter(initiative: Initiative) {
   return '';
 }
 
-export function getPopup(initiative: Initiative, sse_initiatives: DataServices) {
-  const getTerm = sse_initiatives.getVocabs().getTerm;
-  const values = sse_initiatives.getLocalisedVocabs();
-  const labels = sse_initiatives.getFunctionalLabels();
-  const activtiesUri = "am:";
-  const orgStructUri = "os:";
+export function getPopup(initiative: Initiative, dataservices: DataServices) {
+  const vocabs = dataservices.getVocabs();
+  const lang = dataservices.getLanguage();
+  const labels = dataservices.getFunctionalLabels();
+
+  function getTerm(propertyName: string) {
+    const propDef = dataservices.getPropertySchema(propertyName);
+    const propVal = initiative[propertyName];
+    if (isVocabPropDef(propDef)) {
+      if (typeof propVal === 'string')
+        return vocabs.getTerm(propVal, lang);
+      if (propVal === undefined)
+        return labels.notAvailable;
+      throw new Error(`invalid vocab property value for ${propertyName}: ${propVal}`);
+    }
+    throw new Error(`can't get term for non-vocab property ${propertyName}`);
+  }
+
   let popupHTML = `
     <div class="sea-initiative-details">
       <h2 class="sea-initiative-name">${initiative.name}</h2>
       ${getWww(initiative)}
       <h4 class="sea-initiative-nature-of-organisation">${getNatureOfOrganisation(initiative)}</h4>
-      <h4 class="sea-initiative-org-structure">${getOrgStructure(initiative, values[orgStructUri])}</h4>
-      <h4 class="sea-initiative-economic-activity">${getPrimaryActivity(initiative, values[activtiesUri])}</h4>
-      <h4 class="sea-initiative-secondary-activity">${getSecondaryActivities(initiative, values[activtiesUri], labels)}</h5>
+      <h4 class="sea-initiative-org-structure">${getOrgStructure(initiative, vocabs.getVocab('os:', lang))}</h4>
+      <h4 class="sea-initiative-economic-activity">${getPrimaryActivity(initiative, vocabs.getVocab('am:', lang))}</h4>
+      <h4 class="sea-initiative-secondary-activity">${getSecondaryActivities(initiative, vocabs.getVocab('am:', lang), labels)}</h5>
       <p>${initiative.desc || ''}</p>
     </div>
     
