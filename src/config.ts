@@ -32,7 +32,7 @@ const rowToObj = mkObjTransformer<Row, InitiativeObj>({
   natureOfOrganisation: T.multi({of: T.nullable.prefixed(baseNoUri), omit: ['', null]}).from('Nature of Organisation'),
   orgStructure: T.multi({of: T.text(''), omit: ['']}).from('Organisational Structure'),
   primaryActivity: T.nullable.text(null).from('Primary Activity'),
-  activity: T.multi({of: T.text(''), omit: ['']}).from('Activities'),
+  secondaryActivities: T.multi({of: T.text(''), omit: ['']}).from('Activities'),
   combinedActivities: T.multi({of: T.text(''), omit: ['']}).from('Combined Activities'),
   street: T.text('').from('Street Address'),
   locality: T.text('').from('Locality'),
@@ -78,9 +78,8 @@ const fields: FieldDefs = {
     uri: 'am:',
     titleUri: 'ui:primaryActivity',
   },
-  activities: {
+  secondaryActivities: {
     type: 'multi',
-    from: 'activity',
     titleUri: 'ui:secondaryActivities',
     of: {
       type: 'vocab',
@@ -109,7 +108,7 @@ export const config: ConfigData = new ConfigData({
   htmlTitle: 'Owned by Oxford',
   fields: fields,
   filterableFields: [
-    'combinedActivities', 'primaryActivity', 'activities', 'orgStructure'
+    'combinedActivities', 'primaryActivity', 'secondaryActivities', 'orgStructure'
   ],
   searchedFields: [
     'name', 'street', 'locality', 'postcode', 'description', 'combinedActivities', 'orgStructure',
