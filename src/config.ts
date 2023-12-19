@@ -96,6 +96,7 @@ const fields: FieldDefs = {
   },
   orgStructure: {
     type: 'multi',
+    titleUri: 'ui:orgStructure',
     of: {
       type: 'vocab',
       uri: 'os:',

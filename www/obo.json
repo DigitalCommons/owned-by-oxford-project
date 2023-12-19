@@ -10,7 +10,8 @@
         "terms": {
           "ui:primaryActivity": "Primary Activity",
           "ui:secondaryActivities": "Secondary Activity",
-          "ui:combinedActivities": "Activities"
+          "ui:combinedActivities": "All Activities",
+          "ui:orgStructure": "Governance Structure"
         }
       }
     },
