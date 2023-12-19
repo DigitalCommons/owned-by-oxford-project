@@ -1,4 +1,4 @@
-import { DataServices, isVocabPropDef } from "mykomap/app/model/data-services";
+import { DataServices, propDefToVocabUri } from "mykomap/app/model/data-services";
 import { Initiative } from "mykomap/app/model/initiative";
 import { Vocab } from "mykomap/app/model/vocabs";
 import { PhraseBook } from "mykomap/localisations";
@@ -46,52 +46,27 @@ function getWww(initiative: Initiative) {
   return '';
 }
 
-function getNatureOfOrganisation(initiative: Initiative) {
-  if (initiative.natureOfOrganisation instanceof Array && initiative.natureOfOrganisation.length > 0) {
-    const term = initiative.natureOfOrganisation.join(", ");    
-    return `Nature of Organisation: ${term}`;
+function vocabPropAsText(propTitle: string, propValue: unknown, vocab: Vocab, defaultTerm: string, unrecognised: string): string {
+  const values: Array<unknown> = [];
+  if (propValue instanceof Array && propValue.length > 0) {
+    values.push(...propValue);
   }
-  return '';
-}
-
-function getOrgStructure(initiative: Initiative, osVocab: Vocab) {
-
-  if (initiative.orgStructure instanceof Array && initiative.orgStructure.length > 0) {
-    const term = initiative.orgStructure.map(id => osVocab.terms[String(id)]).join(", ");    
-    return `${osVocab.title}: ${term}`;
+  else if (propValue != null) {
+    values.push(propValue);
   }
+  const terms = values
+    .filter(id => id != null)
+    .sort()
+    .map(id => vocab.terms[String(id)] ?? unrecognised);
 
-  return '';
-}
-
-function getPrimaryActivity(initiative: Initiative, acVocab: Vocab) {
-  if (typeof initiative.primaryActivity === 'string' && initiative.primaryActivity != "") {
-    return `Main Activity: ${acVocab.terms[initiative.primaryActivity]}`;
+  switch (terms.length) {
+    case 0:
+      return `${propTitle}: ${defaultTerm}`;
+    case 1:
+      return `<dt>${propTitle}</dt><dd>${terms[0]}</dd>`;
+    default: 
+      return `<dt>${propTitle}</dt><ul><li>${terms.join("<li>")}</ul>`;
   }
-
-  return '';
-}
-
-function getSecondaryActivities(initiative: Initiative, acVocab: Vocab, labels: PhraseBook) {
-  const title = labels.secondaryActivities;
-
-  if (initiative.activities instanceof Array && initiative.activities.length > 0) {
-    const term = initiative.activities.map(id => acVocab.terms[String(id)]).join(", ");
-    return `${title}: ${term}`;
-  }
-
-  return '';
-}
-
-function getCombinedActivities(initiative: Initiative, acVocab: Vocab) {
-  const title = 'Activites'; //  HACK - should be localised (except we are catering for EN only)
-
-  if (initiative.combinedActivities instanceof Array && initiative.combinedActivities.length > 0) {
-    const term = initiative.combinedActivities.map(id => acVocab.terms[String(id)]).join(", ");
-    return `${title}: ${term}`;
-  }
-
-  return '';
 }
 
 function getEmail(initiative: Initiative) {
@@ -123,7 +98,8 @@ export function getPopup(initiative: Initiative, dataservices: DataServices) {
   function getTerm(propertyName: string) {
     const propDef = dataservices.getPropertySchema(propertyName);
     const propVal = initiative[propertyName];
-    if (isVocabPropDef(propDef)) {
+    const vocabUri = propDefToVocabUri(propDef);
+    if (vocabUri) {
       if (typeof propVal === 'string')
         return vocabs.getTerm(propVal, lang);
       if (propVal === undefined)
@@ -133,14 +109,25 @@ export function getPopup(initiative: Initiative, dataservices: DataServices) {
     throw new Error(`can't get term for non-vocab property ${propertyName}`);
   }
 
+  // test unknown vals
+  function vocabText(propName: string): string {
+    const propDef = dataservices.getPropertySchema(propName);
+    if (!propDef) throw new Error(`No such initiative property: ${propName}`);
+    const vocabUri = propDefToVocabUri(propDef);
+    if (!vocabUri) throw new Error(`Initiative property not a vocab URI: ${propName}`);
+    const vocab = vocabs.getVocab(vocabUri, lang);
+    let propTitle = vocab.title;
+    if (propDef.titleUri)
+      propTitle = vocabs.getTerm(propDef.titleUri, lang, vocab.title);
+    return vocabPropAsText(propTitle, initiative[propName], vocab, labels.notAvailable, labels.notAvailable); // FIXME add unrecognisedTerm label, and warning trace
+  }
+
   let popupHTML = `
     <div class="sea-initiative-details">
       <h2 class="sea-initiative-name">${initiative.name}</h2>
-      ${getWww(initiative)}
-      <h4 class="sea-initiative-nature-of-organisation">${getNatureOfOrganisation(initiative)}</h4>
-      <h4 class="sea-initiative-org-structure">${getOrgStructure(initiative, vocabs.getVocab('os:', lang))}</h4>
-      <h4 class="sea-initiative-economic-activity">${getPrimaryActivity(initiative, vocabs.getVocab('am:', lang))}</h4>
-      <h4 class="sea-initiative-secondary-activity">${getSecondaryActivities(initiative, vocabs.getVocab('am:', lang), labels)}</h5>
+      <h4 class="sea-initiative-nature-of-organisation">${vocabText('natureOfOrganisation')}</h4>
+      <h4 class="sea-initiative-org-structure">${vocabText('orgStructure')}</h4>
+      <h4 class="sea-initiative-economic-activity">${vocabText('combinedActivities')}</h4>
       <p>${initiative.desc || ''}</p>
     </div>
     
@@ -157,3 +144,4 @@ export function getPopup(initiative: Initiative, dataservices: DataServices) {
 
   return popupHTML;
 };
+
