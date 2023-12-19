@@ -14,7 +14,7 @@ import {
 } from "mykomap/obj-transformer";
 import * as versions from "./version.json";
 
-import about from "../config/about.html";
+import about from "./about.html";
 import { getPopup } from './popup';
 
 type Row = Record<string, string|null|undefined>;
