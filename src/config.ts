@@ -141,7 +141,7 @@ export const config: ConfigData = new ConfigData({
   ],
   defaultLatLng: [51.7520, -1.2577 ],
 //  initialBounds: [[52.1006, -1.8787],[51.3966, -0.5974]],    
-  defaultOpenSidebar: false,
+  defaultOpenSidebar: true,
   doesDirectoryHaveColours: true,
   maxZoomOnGroup:12,
   maxZoomOnOne: 14,
