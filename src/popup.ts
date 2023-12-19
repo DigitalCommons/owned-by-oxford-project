@@ -42,7 +42,7 @@ function getAddress(initiative: Initiative, getTerm: (prop: string) => string, l
 function getWww(initiative: Initiative) {
   // Initiative's website. Note, not all have a website.
   if (typeof initiative.www === 'string')
-    return `<a href="${initiative.www}" target="_blank" >${initiative.www}</a>`;
+    return `<a  class="fa fa-link" href="${initiative.www}" target="_blank" ></a>`;
   return '';
 }
 
@@ -133,12 +133,13 @@ export function getPopup(initiative: Initiative, dataservices: DataServices) {
     
     <div class="sea-initiative-contact">
       <h3>${labels.contact}</h3>
+      ${getAddress(initiative, getTerm, labels)}
       <div class="sea-initiative-links">
+        ${getWww(initiative)}
         ${getEmail(initiative)}
         ${getFacebook(initiative)}
         ${getTwitter(initiative)}
       </div>
-      ${getAddress(initiative, getTerm, labels)}
     </div>
   `;
 
