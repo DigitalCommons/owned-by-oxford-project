@@ -152,6 +152,7 @@ export const config: ConfigData = new ConfigData({
   maxZoomOnOne: 14,
   maxZoomOnSearch: 12,
   showDatasetsPanel: false,
+  logo: 'logo.png',
   customPopup: getPopup,
   aboutHtml: about,
   ...versions,
