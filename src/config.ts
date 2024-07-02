@@ -37,6 +37,8 @@ const rowToObj = mkObjTransformer<Row, InitiativeObj>({
   street: T.text('').from('Street Address'),
   locality: T.text('').from('Locality'),
   postcode: T.text('').from('Postcode'),
+  geocodedAddress: T.text('').from('Geocoded Address'),
+  geocoderConfidence: T.text('').from('Geo Container Confidence'),
   www: T.nullable.text(null).from('Website'),
   chNum: T.nullable.text(null).from('Companies House Number'),
   baseMembershipType: T.nullable.text(null).from('Membership Type'),
@@ -52,6 +54,8 @@ const fields: FieldDefs = {
   street: 'value',
   locality: 'value',    
   postcode: 'value',
+  geocodedAddress: 'value',
+  geocoderConfidence: 'value',
   shortPostcode: {
     type: 'custom',
     builder: (id: string, def: CustomPropDef, params: InitiativeObj) => {
