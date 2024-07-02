@@ -3,7 +3,8 @@
 import { ConfigData } from  "mykomap/app/model/config-schema";
 
 import type {
-  CustomPropDef, FieldDefs
+  ConfigPropDefs,
+  CustomPropDef,
 } from "mykomap/app/model/data-services";
 import type {
   InitiativeObj
@@ -46,7 +47,7 @@ const rowToObj = mkObjTransformer<Row, InitiativeObj>({
 });
 
 
-const fields: FieldDefs = {
+const propDefs: ConfigPropDefs = {
   desc: 'value',
   www: 'value',
   email: 'value',
@@ -74,6 +75,7 @@ const fields: FieldDefs = {
     type: 'vocab',
     uri: 'am:',
     titleUri: 'ui:primaryActivity',
+    filter: undefined,
   },
   natureOfOrganisation: {
     type: 'multi',
@@ -81,6 +83,7 @@ const fields: FieldDefs = {
       type: 'vocab',
       uri: 'no:'
     },
+    filter: "no:communityEnt",
   },
   secondaryActivities: {
     type: 'multi',
@@ -97,6 +100,7 @@ const fields: FieldDefs = {
       type: 'vocab',
       uri: 'am:',
     },
+    filter: undefined,
   },
   orgStructure: {
     type: 'multi',
@@ -105,16 +109,14 @@ const fields: FieldDefs = {
       type: 'vocab',
       uri: 'os:',
     },
+    filter: undefined,
   },
 };
 
 export const config: ConfigData = new ConfigData({
   namedDatasets: ['owned-by-oxford'],
   htmlTitle: 'Owned by Oxford',
-  fields: fields,
-  filterableFields: [
-    'primaryActivity', 'natureOfOrganisation', 'combinedActivities', 'orgStructure'
-  ],
+  propDefs,
   searchedFields: [
     'name', 'street', 'locality', 'postcode', 'description',
     'natureOfOrganisation', 'combinedActivities', 'orgStructure',
