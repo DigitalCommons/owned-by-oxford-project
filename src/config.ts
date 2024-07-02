@@ -70,17 +70,17 @@ const fields: FieldDefs = {
       return match ? match[0] : undefined;
     },
   },
+  primaryActivity: {
+    type: 'vocab',
+    uri: 'am:',
+    titleUri: 'ui:primaryActivity',
+  },
   natureOfOrganisation: {
     type: 'multi',
     of: {
       type: 'vocab',
       uri: 'no:'
     },
-  },
-  primaryActivity: {
-    type: 'vocab',
-    uri: 'am:',
-    titleUri: 'ui:primaryActivity',
   },
   secondaryActivities: {
     type: 'multi',
