@@ -19,7 +19,7 @@ import about from "./about.html";
 import { getPopup } from './popup';
 
 type Row = Record<string, string|null|undefined>;
-const baseUri = 'https://dev.lod.coop/coops-uk/';
+const baseUri = 'https://dev.lod.coop/owned-by-oxford/';
 const baseNoUri = 'https://dev.lod.coop/owned-by-oxford/org-nature/';
 
 const rowToObj = mkObjTransformer<Row, InitiativeObj>({
