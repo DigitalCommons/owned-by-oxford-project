@@ -118,7 +118,7 @@ export const config: ConfigData = new ConfigData({
   htmlTitle: 'Owned by Oxford',
   propDefs,
   searchedFields: [
-    'name', 'street', 'locality', 'postcode', 'description',
+    'name', 'street', 'locality', 'postcode', 'desc',
     'natureOfOrganisation', 'combinedActivities', 'orgStructure',
   ],
   languages: ['EN'],
