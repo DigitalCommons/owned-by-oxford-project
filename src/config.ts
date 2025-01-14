@@ -19,8 +19,8 @@ import about from "./about.html";
 import { getPopup } from './popup';
 
 type Row = Record<string, string|null|undefined>;
-const baseUri = 'https://dev.lod.coop/owned-by-oxford/';
-const baseNoUri = 'https://dev.lod.coop/owned-by-oxford/org-nature/';
+const baseUri = 'https://lod.coop/owned-by-oxford/';
+const baseNoUri = 'https://lod.coop/owned-by-oxford/org-nature/';
 
 const rowToObj = mkObjTransformer<Row, InitiativeObj>({
   uri: T.prefixed(baseUri).from('Identifier'),
@@ -128,7 +128,7 @@ export const config: ConfigData = new ConfigData({
       id: 'obo-vocab',
       type: 'json',
       label: 'Owned By Oxford',
-      url: 'https://dev.data.digitalcommons.coop/owned-by-oxford/vocabs.json',
+      url: 'https://data.digitalcommons.coop/owned-by-oxford/vocabs.json',
     },
     {
       id: 'ui-vocab',
@@ -142,7 +142,7 @@ export const config: ConfigData = new ConfigData({
       id: 'obo-public',
       label: 'Owned By Oxford',
       type: 'csv',
-      url: 'https://dev.data.digitalcommons.coop/owned-by-oxford/standard.csv',
+      url: 'https://data.digitalcommons.coop/owned-by-oxford/standard.csv',
       transform: rowToObj,
     },
   ],

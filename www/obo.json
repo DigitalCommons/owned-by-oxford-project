@@ -1,7 +1,7 @@
 {
   "prefixes": {
-    "https://dev.lod.coop/owned-by-oxford/phrases#": "ui",
-    "https://dev.lod.coop/owned-by-oxford/org-nature/": "no"
+    "https://lod.coop/owned-by-oxford/phrases#": "ui",
+    "https://lod.coop/owned-by-oxford/org-nature/": "no"
   },
   "vocabs": {
     "ui:": {
