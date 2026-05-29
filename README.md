@@ -1,13 +1,7 @@
-# NAME
+# Owned By Oxford
 
-sea-site-experiment
-
-# SYNOPSIS
-
-This is a demonstration/pilot project showing how to use the [`sea-map`][1] package.
-
-[1]: https://github.com/SolidarityEconomyAssociation/sea-map
-
-For details of how to do that, see the `sea-map` project's own
-documentation. This is merely a supplementary example, which you can
-use to base new projects on.
+This is a legacy mykomap for Owned By Oxford. It requires the [legacy mykomap codebase](https://github.com/DigitalCommons/mykomap-legacy) to work. Legacy mykomap is no longer in active development
+	
+The actively-developed Mykomap codebase is [here](https://github.com/DigitalCommons/mykomap)
+	
+This is a Digital Commons Cooperative project. Please follow our [contributor guidelines](https://github.com/DigitalCommons#-contributing) and feel free to reach out if you are in need of a Mykomap instance for your use-case.
